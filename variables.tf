@@ -18,3 +18,12 @@ variable "department" {
   description = "Value for the department tag."
   default     = "WebDev"
 }
+
+variable "expired_version_retention_days" {
+  type        = number
+  description = "Number of days to retain expired versions."
+  validation {
+    condition     = var.expired_version_retention_days > 0 && var.expired_version_retention_days <= 365
+    error_message = "Please choose a value between 1 and 365 days."
+  }
+}

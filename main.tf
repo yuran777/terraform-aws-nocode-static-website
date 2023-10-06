@@ -93,6 +93,20 @@ resource "aws_s3_bucket_versioning" "www_bucket" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "www_bucket" {
+  depends_on = [aws_s3_bucket_versioning.www_bucket]
+  bucket     = aws_s3_bucket.www_bucket.id
+  rule {
+    id     = "expire"
+    status = "Enabled"
+    filter {}
+
+    noncurrent_version_expiration {
+      noncurrent_days = var.expired_version_retention_days
+    }
+  }
+}
+
 resource "random_integer" "product" {
   min = 0
   max = length(local.hashi_products) - 1
