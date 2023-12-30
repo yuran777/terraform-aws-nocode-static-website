@@ -20,7 +20,7 @@ variable "department" {
 }
 
 variable "expired_version_retention_days" {
-  type        = number
+  type        = string
   description = "Number of days to retain expired versions."
   validation {
     condition     = var.expired_version_retention_days > 0 && var.expired_version_retention_days <= 365
