@@ -101,9 +101,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "www_bucket" {
     status = "Enabled"
     filter {}
 
-    # noncurrent_version_expiration {
-    #   noncurrent_days = var.expired_version_retention_days
-    # }
+    noncurrent_version_expiration {
+      noncurrent_days = var.expired_version_retention_days
+    }
   }
 }
 
