@@ -20,7 +20,7 @@ variable "department" {
 }
 
 variable "expired_version_retention_days" {
-  type        = Number
+  type        = number
   description = "Number of days to retain expired versions."
   default = 1
   validation {
